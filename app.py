@@ -11,6 +11,15 @@ CORS(app)
 # Loading model (brain)
 model = joblib.load('student_performance_model.pkl')
 
+@app.route('/')
+def home():
+    return jsonify({
+        "message": "Student Performance Prediction API",
+        "status": "Running",
+        "prediction_endpoint": "/predict",
+        "method": "POST"
+    })
+
 # Telling about address
 @app.route('/predict', methods=['POST'])
 # Defining function
